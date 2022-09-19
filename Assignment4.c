@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX 300
-void InsertFun();
+void insertFun();
 void ReadFun();
 void updateFun();
 int main() {
@@ -22,13 +22,13 @@ int main() {
 
     switch (choice) {
         case (1):
-            InsertFun();
+            insertFun();
             printf("Do you want to insert data again? \n");
             printf("press 1 to insert more,0 to exit \n");
             printf("Enter your choice:");
             scanf("%d", &case1);
             while (case1 == 1) {
-                InsertFun();
+                insertFun();
                 printf("press 1 to insert more,0 to exit \n");
                 printf("Enter your choice:");
                 scanf("%d", &case1);
@@ -37,16 +37,16 @@ int main() {
 
         case (2):
 
-            printf("id   Name     Password     amount     age   location \n");
+            printf("id     Name       Password          amount         age      location \n");
             ReadFun();
             printf("Enter 1 to add more or 0 to exit\n");
             printf("Enter your choice:");
             scanf("%d", &case2);
             while (case2 == 1) {
+                insertFun();
                 printf("Enter 1 to add more or 0 to exit \n");
                 printf("Enter your choice:");
                 scanf("%d", &case2);
-                InsertFun();
             }
             break;
 
@@ -58,7 +58,7 @@ int main() {
             printf("Enter your choice:");
             scanf("%d", &case3);
             while (case3 == 1) {
-                InsertFun();
+                insertFun();
                 printf("press 1 to insert more,0 to exit \n");
                 printf("Enter your choice:");
                 scanf("%d", &case3);
@@ -73,7 +73,7 @@ int main() {
             return 0;
     }
 }
-void InsertFun(){
+void insertFun(){
 
     FILE*fptr;
     int id,amount,age = 0;
@@ -100,11 +100,11 @@ void InsertFun(){
     scanf("%s",location);
 
     fprintf(fptr,"%d",id);
-    fprintf(fptr,"%10s",userName);
-    fprintf(fptr,"%10s",password);
-    fprintf(fptr,"%10d",amount);
-    fprintf(fptr,"%10d",age);
-    fprintf(fptr,"%10s",location);
+    fprintf(fptr,"%13s",userName);
+    fprintf(fptr,"%13s",password);
+    fprintf(fptr,"%13d",amount);
+    fprintf(fptr,"%13d",age);
+    fprintf(fptr,"%13s",location);
     fprintf(fptr,"\n");
 
     fclose(fptr);
@@ -137,10 +137,10 @@ void updateFun(){
     FILE *fptr1, *fptr2;
     char str[MAX], temp[] = "temp.txt";
     char fname[MAX] = "assignment4.txt";
-    printf("id   Name     Password     amount     age   location \n");
+    printf("id     Name       Password          amount         age      location \n");
     ReadFun();
     printf("\n\n Delete a specific line from the file :\n");
-    printf("-----------------------------------------\n");
+    printf("----------------------------------------------\n");
     fptr1 = fopen("assignment4.txt", "r");
     if (!fptr1)
     {
@@ -186,5 +186,6 @@ void updateFun(){
         ch=fgetc(fptr1);
     }
     fclose(fptr1);
+
 
 }
